@@ -5,33 +5,93 @@ import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
 
+// Animation variants for staggered paragraph fade-in
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const paragraphVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
 export default function About() {
   const { ref } = useSectionInView("About");
 
   return (
     <motion.section
       ref={ref}
-      className="mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.175 }}
+      className="mb-28 max-w-[55rem] px-4 text-justify leading-8 sm:mb-40 scroll-mt-28 hyphens-auto"
       id="about"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
     >
-      <SectionHeading>About me</SectionHeading>
-        As a dedicated and results-driven Computer Science professional with over 3 years of hands-on experience in data science and AI, I specialize in building robust machine learning solutions across both structured and unstructured data domains. My expertise encompasses the full ML lifecycle—from data preprocessing and feature engineering to model training, optimization, and deployment—leveraging tools such as Python (NumPy, pandas, scikit-learn), TensorFlow, and SQL. I have successfully led and delivered end-to-end AI projects, including deep learning models for image classification and anomaly detection.
+      <div className="text-center">
+        <SectionHeading>About me</SectionHeading>
+      </div>
 
-        In recent work, I’ve focused on agentic AI systems, designing intelligent AI chatbots and voice agents capable of handling dynamic conversations and real-time decision-making. These systems integrate NLP, speech recognition, and large language models to deliver high-performance, domain-specific automation for customer engagement and business operations.
+      <motion.p className="mb-4" variants={paragraphVariants}>
+        I&apos;m an AI engineer with 4 years of experience building
+        production-grade ML and agentic AI systems. My
+        focus is the applied LLM stack: RAG pipelines,{" "}
+        LLM fine-tuning for domain-specific tasks, and
+        multi-agent workflows using LangGraph, CrewAI,
+        and the Model Context Protocol (MCP). I&apos;ve also shipped voice
+        agents and intelligent chatbots that handle real customer conversations
+        end to end.
+      </motion.p>
 
-        Grounded by a strong academic background in Computer Science and enhanced by multiple certifications in deep learning, I am passionate about solving complex problems and translating data insights into scalable, real-world applications. Known for identifying edge cases and enhancing model robustness, I am continuously driven by innovation and committed to advancing the frontiers of AI.
+      <motion.p className="mb-4" variants={paragraphVariants}>
+        Day to day, I work with Python, PyTorch, Hugging Face, and LangChain,
+        paired with vector databases like Qdrant and Pinecone for retrieval. I
+        take systems all the way to production: containerizing services with{" "}
+        Docker, building CI/CD pipelines, and deploying
+        to AWS and Azure with an eye on cost and
+        latency.
+      </motion.p>
 
-      <p>
-        <span className="italic">When I'm not coding</span>, I enjoy playing
-        video games and gardening. I also enjoy{" "}
-        <span className="font-medium">learning new stuff</span>. I am currently
-        learning about{" "}
-        <span className="font-medium">history and finance</span>. I'm also
-        learning how to build businesses.
-      </p>
+      <motion.p className="mb-4" variants={paragraphVariants}>
+        I&apos;m also a full-stack developer (React, Next.js, Node.js), which
+        means I can wrap the models I build into actual products people use
+        instead of handing off a notebook and walking away.
+      </motion.p>
+
+      <motion.p className="mb-4" variants={paragraphVariants}>
+        The way I work is consistent and disciplined. I show up every
+        day, ship in small steady increments rather than big unreliable bursts,
+        and I&apos;m always trying to learn the next thing, whether that&apos;s
+        a new framework, a new architecture pattern, or a sharper way to think
+        about a problem. Most of what I enjoy is the figuring-out part: taking
+        a vague problem, breaking it down, and getting to a clean solution.
+      </motion.p>
+
+      <motion.p className="mb-4" variants={paragraphVariants}>
+        What sets me apart isn&apos;t any one tool in the stack. It&apos;s that
+        I treat AI work as engineering, not magic. I
+        care about whether the system actually runs in production, whether it
+        stays cheap to operate, and whether the people using it get real value
+        back. Plenty of people can build a demo. Fewer can ship something that
+        holds up.
+      </motion.p>
+
+      <motion.p variants={paragraphVariants}>
+        <span className="italic">When I&apos;m not coding</span>, I enjoy
+        playing video games and gardening. I&apos;m also{" "}
+        <span className="font-medium">learning history and finance</span>, and
+        picking up how to build businesses on the side.
+      </motion.p>
     </motion.section>
   );
 }

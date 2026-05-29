@@ -1,16 +1,7 @@
+// next.config.js — AFTER
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-    ],
-  },
-  experimental: {
-    serverActions: true,
-  },
+  devIndicators: false,
 };
 
 module.exports = nextConfig;

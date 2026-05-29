@@ -36,7 +36,7 @@ export default function Contact() {
         <a className="underline" href="mailto:usman.data002@gmail.com">
           usman.data002@gmail.com
         </a>{" "}
-        or through this form.
+        or through this form
       </p>
 
       <form
@@ -52,6 +52,15 @@ export default function Contact() {
           toast.success("Email sent successfully!");
         }}
       >
+        {/* Honeypot — hidden from real users, traps bots */}
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+        />
         <input
           className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
           name="senderEmail"
@@ -65,7 +74,7 @@ export default function Contact() {
           name="message"
           placeholder="Your message"
           required
-          maxLength={5000}
+          maxLength={10000}
         />
         <SubmitBtn />
       </form>
