@@ -59,7 +59,7 @@ export const experiencesData = [
     description:
       "Building production AI systems for international clients: RAG pipelines, fine-tuned LLMs, agentic workflows with LangGraph and CrewAI, plus full-stack delivery with React, Next.js, and cloud deployment.",
     icon: React.createElement(FaReact),
-    date: "Jan 2024 - Present",
+    date: "Jan 2023 - Present",
   },
   {
     title: "Web Development Intern",
@@ -67,7 +67,7 @@ export const experiencesData = [
     description:
       "PHP full-stack development on real-world client projects. Built and maintained web applications using HTML, CSS, and backend workflows alongside a senior development team.",
     icon: React.createElement(CgWorkAlt),
-    date: "May 2023 - Jul 2023",
+    date: "May 2024 - Jul 2024",
   },
 ] as const;
 
